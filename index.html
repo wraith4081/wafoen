@@ -38,40 +38,80 @@
 </head>
 
 <body class="relative h-full bg-black select-none flex justify-center overflow-hidden">
-  <video src="https://wafoen.com/bg.mp4" class="absolute top-0 ratio-video h-full " id="bg-video" autoplay muted loop></video>
+   <video src="/bg.mp4" class="absolute top-0 ratio-video min-w-[100vh] w-full" id="bg-video" autoplay muted loop></video>
+  
   <div class="absolute inset-0 w-full h-full flex justify-center items-center z-10 flex flex-col">
     <div class="flex flex-col items-center select-none">
-      <h1 class="text-[90px] text-violet-700 font-semibold font-round">Wafoen</h1>
-    <p class="font-lato tx">Cok yakında hizmetteyiz.</p>
+      <h1 class="text-[90px] text-violet-700 font-semibold font-round" id="description">Wafoen</h1>
+      <p class="font-lato tx label">Cok yakında hizmetteyiz.</p>
     </div>
     <div class="font-lato text-slate-100 sm:grid md:flex gap-8">
       <div class="text-top">
         <p class="text-t" id="month">02</p>
-        <p>Ay</p>
+        <p class="label">Ay</p>
       </div>
       <div class="text-top">
         <p class="text-t" id="week">02</p>
-        <p>Hafta</p>
+        <p class="label">Hafta</p>
       </div>
       <div class="text-top">
         <p class="text-t" id="day">02</p>
-        <p>Gün</p>
+        <p class="label">Gün</p>
       </div>
       <div class="text-top">
         <p class="text-t" id="hour">02</p>
-        <p>Saat</p>
+        <p class="label">Saat</p>
       </div>
       <div class="text-top">
         <p class="text-t" id="minute">02</p>
-        <p>Dakika</p>
+        <p class="label">Dakika</p>
       </div>
       <div class="text-top">
         <p class="text-t" id="second">02</p>
-        <p>Saniye</p>
+        <p class="label">Saniye</p>
       </div>
     </div>
   </div>
   <script>
+const translate = {
+      "description": {
+        "tr": "Çok yakında hizmetteyiz!",
+        "en": "We will be at your service very soon!",
+        "jp": "間もなくご利用いただけます。"
+      },
+      "month": {
+        "tr": "Ay",
+        "en": "Month"
+      },
+      "week": {
+        "tr": "Hafta",
+        "en": "Week"
+      },
+      "day": {
+        "tr": "Gün",
+        "en": "Day"
+      },
+      "hour": {
+        "tr": "Saat",
+        "en": "Hour"
+      },
+      "minute": {
+        "tr": "Dakika",
+        "en": "Minute"
+      },
+      "second": {
+        "tr": "Saniye",
+        "en": "Second"
+      }
+    }
+    var userLang = navigator.language || navigator.userLanguage;
+    var lang = userLang.substring(0, 2);
+    if (!Object.keys(translate.month).includes(lang))
+      lang = "en"
+    if (lang != "tr")
+      for (let i in translate)
+        document.getElementById(i).parentNode.querySelector(".label").innerHTML = translate[i][lang];
+
     const bgVideo = document.getElementById("bg-video")
     document.body.click();
     bgVideo.onloadeddata = () => bgVideo.play();
