@@ -40,8 +40,7 @@
       </div>
     </div>
   </div>
-   <video src="/bg.mp4" class="w-screen h-screen fixed absolute inset-0 bg-cover bg-center" id="bg-video" autoplay="" muted="" loop="" height="657px" width="1168px"></video>
-  
+  <video src="/bg.mp4" class="w-screen h-screen fixed absolute inset-0 bg-cover bg-center" id="bg-video" autoplay="" muted="" loop="" height="657px" width="1168px"></video>
   <div class="absolute inset-0 w-full h-full flex justify-center items-center z-10 flex flex-col">
     <div class="flex flex-col items-center select-none">
       <h1 class="text-[90px] font-semibold font-round" id="description">Wafoen</h1>
@@ -49,7 +48,7 @@
     </div>
     <div class="font-lato text-slate-100 grid grid-cols-2 sm:grid-cols-3 md:flex gap-8">
       <div class="text-top">
-        <p class="text-t" id="month">01</p>
+        <p class="text-t" id="month">00</p>
         <p class="label">Ay</p>
       </div>
       <div class="text-top">
@@ -61,29 +60,26 @@
         <p class="label">Gün</p>
       </div>
       <div class="text-top">
-        <p class="text-t" id="hour">22</p>
+        <p class="text-t" id="hour">00</p>
         <p class="label">Saat</p>
       </div>
       <div class="text-top">
-        <p class="text-t" id="minute">05</p>
+        <p class="text-t" id="minute">00</p>
         <p class="label">Dakika</p>
       </div>
       <div class="text-top">
-        <p class="text-t" id="second">06</p>
+        <p class="text-t" id="second">00</p>
         <p class="label">Saniye</p>
       </div>
     </div>
   </div>
   <script>
-    // Constants
     const youtube = "https://www.youtube.com/channel/UCpY7wsjsoX1kTYPysovoSSg";
     const patreon = "https://www.patreon.com/wafoencom";
     const color = "#2a9df4";
     const bgVideo = document.getElementById("bg-video");
     const openTime = new Date(2022,6,23,12,0,0).getTime();
     const times = [2592000,604800,86400,3600,60,1];
-
-    // Translate
     const translate = {
       "description": {
         "tr": `Çok yakında hizmetteyiz!<br /> Bizi <a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a>'da takip et ve eğer istersen <a style="color:${color}; font-weight: 500;" href="${patreon}">Patreon</a> üzerinden bağış yap! <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">Dili değistir</a>`,
@@ -108,20 +104,15 @@
       "second": {
         "tr": "Saniye", "en": "Second", "jp": "セカンド"
       }
-    }
-    
-    // Language settings
+    };
     const lang_select = document.getElementById("lang_select")
     const language = localStorage.getItem("language");
-
-      /* Show language selection if language is undefined */
       if (language == null) {
         updateLanguage("en");
-        lang_select.classList.remove("hidden")
+        lang_select.classList.remove("hidden");
       } else {
-        updateLanguage(language)
-      }
-      /* Change language data on Local Storage and update language */
+        updateLanguage(language);
+      };
       function changeLanguage(lang_x) {
         console.log(lang_x)
         if (["tr","en","jp"].includes(lang_x)) {
@@ -129,31 +120,21 @@
           location.reload();
         }
       }
-    
-      /* Change labels with language data */
       function updateLanguage(language_param) {
         if (!Object.keys(translate.month).includes(language_param)) language_param = "en"
         for (let i in translate)
           document.getElementById(i).parentNode.querySelector(".label").innerHTML = translate[i][language_param];
       }
-
-      /* Reset Language */
       function resetLang() {
         localStorage.removeItem("language");
         location.reload();
       }
-
     
     let elements = [];
-    
-    
-
     bgVideo.setAttribute("height", window.innerHeight +"px");
     bgVideo.setAttribute("width", Math.floor(window.innerHeight / 9 * 16 ) + "px");
-    
     document.body.click();
     bgVideo.onloadeddata = () => bgVideo.play();
-    
     for (let i in translate)
       if (i != "description") 
         elements.push(document.querySelector(`#${i}`))
@@ -169,7 +150,6 @@
       elements.map((element,index) => element.innerText = String(timeArray[index]).padStart(2, '0'));
     }
     updateTime();
-    
     setInterval(updateTime,1000)
   </script>
 <script>
