@@ -148,7 +148,7 @@
         timeArray[i] = ~~(timeDiff / time);
         timeDiff -= timeArray[i] * time;
       }
-      elements.map((element,index) => element.innerText = String(timeArray[index]).padStart(2, '0'));
+      elements.map((element,index) => element.innerText = String(Math.max(+timeArray[index], 0)).padStart(2, '0'));
     }
     updateTime();
     setInterval(updateTime,1000)
