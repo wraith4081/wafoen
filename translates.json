@@ -10,5 +10,17 @@
     "en": "Store",
     "jal": "O mise",
     "ja": "お店"
+  },
+  "manga": {
+    "tr": "Manga",
+    "en": "Manga",
+    "jal": "Manga",
+    "ja": "漫画"
+  },
+  "news": {
+    "tr": "Haberler",
+    "en": "News",
+    "jal": "Nyūsu",
+    "ja": "ニュース"
   }
 }
