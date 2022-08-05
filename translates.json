@@ -1,16 +1,14 @@
 {
-  "navigator": {
-    "login": {
-      "tr": "Giriş Yap",
-      "en": "Login",
-      "jal": "Roguin suru",
-      "ja": "ログインする"
-    },
-    "store": {
-      "tr": "Mağaza",
-      "en": "Store",
-      "jal": "O mise",
-      "ja": "お店"
-    }
+  "login": {
+    "tr": "Giriş Yap",
+    "en": "Login",
+    "jal": "Roguin suru",
+    "ja": "ログインする"
+  },
+  "store": {
+    "tr": "Mağaza",
+    "en": "Store",
+    "jal": "O mise",
+    "ja": "お店"
   }
 }
