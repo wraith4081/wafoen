@@ -22,5 +22,11 @@
     "en": "News",
     "jal": "Nyūsu",
     "ja": "ニュース"
+  },
+  "featuredShows": {
+    "tr": "Öne çıkan programlar",
+    "en": "Featured Shows",
+    "jal": "Chūmoku no bangumi",
+    "ja": "注目の番組"
   }
 }
