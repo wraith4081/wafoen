@@ -1,5 +1,8 @@
 <html class="h-full"><head>
-  <script>document.querySelector("html").setAttribute("lang", localStorage.getItem("language")||"en");</script>
+  <script>
+    if(window.location.pathname == '/index.html') window.location.href = '/';
+    document.querySelector("html").setAttribute("lang", localStorage.getItem("language")||"en");
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Wafoen</title>
