@@ -38,6 +38,7 @@
 </head>
 
 <body class="h-full bg-black select-none relative overflow-hidden">
+    <!--
     <div class="absolute inset-0 w-full h-full bg-black/25 z-[10000] hidden" id="lang_select">
       <div class="flex w-full h-full justify-center items-center">
         <div class="p-8 bg-slate-900 rounded-xl ">
@@ -50,6 +51,7 @@
         </div>
       </div>
     </div>
+    -->
     <video src="/bg.mp4" class="w-screen h-screen fixed absolute inset-0 bg-cover bg-center" id="bg-video" autoplay="" muted="" loop="" height="657px" width="1168px" style="object-fit: cover;"></video>
     <div class="absolute inset-0 w-full h-full flex justify-center items-center z-10 flex flex-col">
       <div class="flex flex-col items-center select-none">
@@ -114,11 +116,12 @@
         "minute": { "tr": "Dakika", "en": "Minute", "jp": "分" },
         "second": { "tr": "Saniye", "en": "Second", "jp": "セカンド" }
       };
-      const lang_select = document.getElementById("lang_select")
+      const lang_select = document?.getElementById("lang_select")
       const language = localStorage.getItem("language");
+      /*
         if (language == null) lang_select.classList.remove("hidden");
      
-        updateLanguage(language || "en");
+        updateLanguage("en");
         function changeLanguage(lang_x) {
           if (["tr","en","jp"].includes(lang_x)) { localStorage.setItem("language", lang_x); location.reload(); }
         }
@@ -129,7 +132,7 @@
           localStorage.removeItem("language");
           location.reload();
         }
-      
+      */
       let elements = [];
       bgVideo.setAttribute("height", window.innerHeight +"px");
       bgVideo.setAttribute("width", Math.floor(window.innerHeight / 9 * 16 ) + "px");
