@@ -117,8 +117,16 @@
         "minute": { "tr": "Dakika", "en": "Minute", "jp": "分" },
         "second": { "tr": "Saniye", "en": "Second", "jp": "セカンド" }
       };
-      const lang_select = document?.getElementById("lang_select")
-      const language = localStorage.getItem("language");
+      //const lang_select = document?.getElementById("lang_select")
+      //const language = localStorage.getItem("language");
+      var slowLoad = window.setTimeout( function() {
+          bgVideo.remove();
+          alert( "Slow Internet Detected!" );
+      }, 2500 );
+
+      window.addEventListener( 'load', function() {
+          window.clearTimeout( slowLoad );
+      }, false );
       /*
         if (language == null) lang_select.classList.remove("hidden");
      
