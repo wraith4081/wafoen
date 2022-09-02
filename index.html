@@ -1,6 +1,5 @@
 <html class="h-full"><head>
   <script>
-    if(window.location.pathname == '/index.html') window.location.href = '/';
     document.querySelector("html").setAttribute("lang", localStorage.getItem("language")||"en");
   </script>
   <meta charset="utf-8">
@@ -20,23 +19,17 @@
 </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-448421662"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());gtag('config', 'AW-448421662');gtag('event', 'conversion', {'send_to': 'AW-448421662/8qHxCNKb67YDEJ6-6dUB'});
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-GJ7FW95FTC"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());gtag('config', 'G-GJ7FW95FTC');
 </script>
 <!-- Google tag (gtag.js) - Google Analytics FOR GOOGLE ADS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-236893408-1">
 </script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-236893408-1');
@@ -114,44 +107,23 @@
           "en": `We will be at your service very soon!<br /> Follow us on <a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a> and if you want donate to us on <a style="color:${color}; font-weight: 500;" href='${patreon}'>Patreon</a>! <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">Reset Language</a>`,
           "jp": `間もなくご利用いただけます。<a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a>でフォローしてください。<br />寄付したい場合は、<a style="color:${color}; font-weight: 500;" href='${patreon}'>Patreon</a>で寄付してください。 <br /> <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">言語をリセット</a>`
         },
-        "month": {
-          "tr": "Ay", "en": "Month", "jp": "月間"
-        },
-        "week": {
-          "tr": "Hafta", "en": "Week", "jp": "週"
-        },
-        "day": {
-          "tr": "Gün", "en": "Day", "jp": "日"
-        },
-        "hour": {
-          "tr": "Saat", "en": "Hour", "jp": "アワー"
-        },
-        "minute": {
-          "tr": "Dakika", "en": "Minute", "jp": "分"
-        },
-        "second": {
-          "tr": "Saniye", "en": "Second", "jp": "セカンド"
-        }
+        "month": { "tr": "Ay", "en": "Month", "jp": "月間" },
+        "week": { "tr": "Hafta", "en": "Week", "jp": "週" },
+        "day": { "tr": "Gün", "en": "Day", "jp": "日" },
+        "hour": { "tr": "Saat", "en": "Hour", "jp": "アワー" },
+        "minute": { "tr": "Dakika", "en": "Minute", "jp": "分" },
+        "second": { "tr": "Saniye", "en": "Second", "jp": "セカンド" }
       };
       const lang_select = document.getElementById("lang_select")
       const language = localStorage.getItem("language");
-        if (language == null) {
-          updateLanguage("en");
-          lang_select.classList.remove("hidden");
-        } else {
-          updateLanguage(language);
-        };
+        if (language == null) lang_select.classList.remove("hidden");
+     
+        updateLanguage(language || "en");
         function changeLanguage(lang_x) {
-          console.log(lang_x)
-          if (["tr","en","jp"].includes(lang_x)) {
-            localStorage.setItem("language", lang_x);
-            location.reload();
-          }
+          if (["tr","en","jp"].includes(lang_x)) { localStorage.setItem("language", lang_x); location.reload(); }
         }
         function updateLanguage(language_param) {
-          if (!Object.keys(translate.month).includes(language_param)) language_param = "en"
-          for (let i in translate)
-            document.getElementById(i).parentNode.querySelector(".label").innerHTML = translate[i][language_param];
+          if (["en","tr","jp"].includes(language_param)) for (let i in translate) document.getElementById(i).parentNode.querySelector(".label").innerHTML = translate[i][language_param];
         }
         function resetLang() {
           localStorage.removeItem("language");
@@ -163,9 +135,7 @@
       bgVideo.setAttribute("width", Math.floor(window.innerHeight / 9 * 16 ) + "px");
       document.body.click();
       bgVideo.onloadeddata = () => bgVideo.play();
-      for (let i in translate)
-        if (i != "description") 
-          elements.push(document.querySelector(`#${i}`))
+      for (let i in translate) if (i != "description") elements.push(document.querySelector(`#${i}`))
       
       function updateTime() {
         var timeDiff = Math.floor((openTime - new Date().getTime()) / 1000)
@@ -179,12 +149,8 @@
       }
       updateTime();
       setInterval(updateTime,1000)
-    </script>
-  <script>
     if (confirm('Wafoen Beta is active! Do you want to use the beta version?')) {
       window.location.href = 'https://beta.wafoen.com/';
-    } else {
-      
-    }
+    } 
   </script>
   </body></html>
