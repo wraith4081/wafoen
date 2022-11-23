@@ -96,36 +96,42 @@
       
     </div>
     <script>
-      const youtube = "https://www.youtube.com/channel/UCpY7wsjsoX1kTYPysovoSSg";
-      const patreon = "https://www.patreon.com/wafoencom";
-      const color = "#2a9df4";
-      const bgVideo = document.getElementById("bg-video");
-      const openTime = new Date(2022,7,22,12,0,0).getTime();
-      const times = [2592000,604800,86400,3600,60,1];
-      const translate = {
-        "description": {
-          "tr": `Çok yakında hizmetteyiz!<br /> Bizi <a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a>'da takip et ve eğer istersen <a style="color:${color}; font-weight: 500;" href="${patreon}">Patreon</a> üzerinden bağış yap! <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">Dili değistir</a>`,
-          "en": `We will be at your service very soon!<br /> Follow us on <a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a> and if you want donate to us on <a style="color:${color}; font-weight: 500;" href='${patreon}'>Patreon</a>! <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">Reset Language</a>`,
-          "jp": `間もなくご利用いただけます。<a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a>でフォローしてください。<br />寄付したい場合は、<a style="color:${color}; font-weight: 500;" href='${patreon}'>Patreon</a>で寄付してください。 <br /> <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">言語をリセット</a>`
-        },
-        "month": { "tr": "Ay", "en": "Month", "jp": "月間" },
-        "week": { "tr": "Hafta", "en": "Week", "jp": "週" },
-        "day": { "tr": "Gün", "en": "Day", "jp": "日" },
-        "hour": { "tr": "Saat", "en": "Hour", "jp": "アワー" },
-        "minute": { "tr": "Dakika", "en": "Minute", "jp": "分" },
-        "second": { "tr": "Saniye", "en": "Second", "jp": "セカンド" }
-      };
-      //const lang_select = document?.getElementById("lang_select")
-      //const language = localStorage.getItem("language");
-      var slowLoad = window.setTimeout( function() {
-          bgVideo.remove();
-          alert( "Slow Internet Detected!" );
-      }, 2500 );
-
-      window.addEventListener( 'load', function() {
-          window.clearTimeout( slowLoad );
-      }, false );
       /*
+        const youtube = "https://www.youtube.com/channel/UCpY7wsjsoX1kTYPysovoSSg";
+        const patreon = "https://www.patreon.com/wafoencom";
+        const color = "#2a9df4";
+      */
+      const bgVideo = document.getElementById("bg-video");
+      const openTime = new Date(2022, 7, 22, 12, 0, 0).getTime();
+      
+      /*
+        const times = [2592000, 604800, 86400, 3600, 60, 1];
+        const translate = {
+          "description": {
+            "tr": `Çok yakında hizmetteyiz!<br /> Bizi <a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a>'da takip et ve eğer istersen <a style="color:${color}; font-weight: 500;" href="${patreon}">Patreon</a> üzerinden bağış yap! <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">Dili değistir</a>`,
+            "en": `We will be at your service very soon!<br /> Follow us on <a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a> and if you want donate to us on <a style="color:${color}; font-weight: 500;" href='${patreon}'>Patreon</a>! <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">Reset Language</a>`,
+            "jp": `間もなくご利用いただけます。<a style="color:${color}; font-weight: 500;" href='${youtube}'>YouTube</a>でフォローしてください。<br />寄付したい場合は、<a style="color:${color}; font-weight: 500;" href='${patreon}'>Patreon</a>で寄付してください。 <br /> <a style="color:#24a0ed;" onclick="resetLang()" class="cursor-pointer">言語をリセット</a>`
+          },
+          "month": { "tr": "Ay", "en": "Month", "jp": "月間" },
+          "week": { "tr": "Hafta", "en": "Week", "jp": "週" },
+          "day": { "tr": "Gün", "en": "Day", "jp": "日" },
+          "hour": { "tr": "Saat", "en": "Hour", "jp": "アワー" },
+          "minute": { "tr": "Dakika", "en": "Minute", "jp": "分" },
+          "second": { "tr": "Saniye", "en": "Second", "jp": "セカンド" }
+        };
+
+        const lang_select = document?.getElementById("lang_select")
+        const language = localStorage.getItem("language");
+
+        var slowLoad = window.setTimeout( function() {
+            bgVideo.remove();
+            alert( "Slow Internet Detected!" );
+        }, 2500 );
+
+        window.addEventListener( 'load', function() {
+            window.clearTimeout( slowLoad );
+        }, false );
+        
         if (language == null) lang_select.classList.remove("hidden");
      
         updateLanguage("en");
@@ -141,11 +147,20 @@
         }
       */
       let elements = [];
-      bgVideo.setAttribute("height", window.innerHeight +"px");
-      bgVideo.setAttribute("width", Math.floor(window.innerHeight / 9 * 16 ) + "px");
+      
+      const screenWidth = window.innerHeight;
+      const screenHeight = Math.floor(window.innerHeight / 9 * 16 );
+      
+      bgVideo.setAttribute("height", `${screenHeight}px`);
+      bgVideo.setAttribute("width", `${screenWidth}px`);
+      
       document.body.click();
-      bgVideo.onloadeddata = () => bgVideo.play();
-      for (let i in translate) if (i != "description") elements.push(document.querySelector(`#${i}`))
+      
+      bgVideo.onloadeddata = bgVideo.play;
+      
+      for (let i in translate) 
+        if (i != "description") 
+          elements.push(document.querySelector(`#${i}`))
       
       function updateTime() {
         var timeDiff = Math.floor((openTime - new Date().getTime()) / 1000)
@@ -155,12 +170,20 @@
           timeArray[i] = ~~(timeDiff / time);
           timeDiff -= timeArray[i] * time;
         }
-        elements.map((element,index) => element.innerText = String(Math.max(+timeArray[index], 0)).padStart(2, '0'));
+        elements.map(
+          (element,index) => element.innerText = String(
+            Math.max(+timeArray[index], 0)
+          ).padStart(2, '0')
+        );
       }
       updateTime();
-      setInterval(updateTime,1000)
-    if (confirm('Wafoen Beta is active! Do you want to use the beta version?')) {
-      window.location.href = 'https://beta.wafoen.com/';
-    } 
+      setInterval(updateTime, 1000)
+      
+      // Site is out of beta
+      /* 
+        if (confirm('Wafoen Beta is active! Do you want to use the beta version?')) {
+          window.location.href = 'https://beta.wafoen.com/';
+        }
+      */
   </script>
   </body></html>
