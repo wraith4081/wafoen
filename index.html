@@ -160,9 +160,7 @@
       
       const translate = ["month", "week", "day", "hour", "minute", "second"];
 
-      for (let i of translate) 
-        if (i != "description") 
-          elements.push(document.querySelector(`#${i}`))
+      translate.forEach(query => elements.push(document.querySelector(`#${query}`)));
       
       function updateTime() {
         var timeDiff = Math.floor((openTime - new Date().getTime()) / 1000)
@@ -171,12 +169,17 @@
           const time = times[i];
           timeArray[i] = ~~(timeDiff / time);
           timeDiff -= timeArray[i] * time;
+          elements[i]?.innerText = String(
+            Math.max(+timeArray[i], 0)
+          ).padStart(2, '0')
         }
+        /*
         elements.map(
           (element,index) => element.innerText = String(
             Math.max(+timeArray[index], 0)
           ).padStart(2, '0')
         );
+        */
       }
       updateTime();
       setInterval(updateTime, 1000)
