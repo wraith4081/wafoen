@@ -158,7 +158,9 @@
       
       bgVideo.onloadeddata = bgVideo.play;
       
-      for (let i in translate) 
+      const translate = ["month", "week", "day", "hour", "minute", "second"];
+
+      for (let i of translate) 
         if (i != "description") 
           elements.push(document.querySelector(`#${i}`))
       
