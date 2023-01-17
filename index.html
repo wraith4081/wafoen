@@ -167,7 +167,7 @@
           const time = times[i];
           timeArray[i] = ~~(timeDiff / time);
           timeDiff -= timeArray[i] * time;
-          elements[i]?.innerText = String(
+          elements[i].innerText = String(
             Math.max(+timeArray[i], 0)
           ).padStart(2, '0')
         }
