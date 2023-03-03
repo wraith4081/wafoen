@@ -1,11 +1,13 @@
 {
   "short_name": "Wafoen",
-  "name": "Wafoen",
+  "name": "Wafoen - Türkiyenin Anime Sitesi",
+  "description": "Wafoen, Türkiye merkezli bir anime dağıtım ve izleme hizmetidir. Türkiye'de ilk lisanslı anime dağıtımı ve yayını yapan sitedir.",
+  "categories": ["entertainment"],
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
       "src": "logo192.png",
@@ -20,6 +22,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#5500ff",
+  "theme_color": "#000000",
   "background_color": "#ffffff"
 }
